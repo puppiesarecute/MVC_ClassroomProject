@@ -1,0 +1,18 @@
+﻿@model FirstMvcApp.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<div class="grayboxx">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.Partial("_CreateEditStudent")   
+    }
+</div>
+
+<div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger"})
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model FirstMvcApp.Models.Student
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@*<div>
+    <img src="@Model.ProfileImagePath" alt="Profile image" />
+</div>*@
+
+<div class="grayboxx">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {      
+        @Html.Partial("_CreateEditStudent")
+    }
+</div>
+
+<div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</div>
+
+
+
+
+
+
