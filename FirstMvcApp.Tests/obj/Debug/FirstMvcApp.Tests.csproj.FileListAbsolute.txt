@@ -12,11 +12,11 @@ C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstM
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\EntityFramework.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\System.Web.Optimization.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Owin.dll
-C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\EntityFramework.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Security.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
@@ -30,10 +30,10 @@ C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstM
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\EntityFramework.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\System.Web.Optimization.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.xml
-C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\EntityFramework.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Security.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml

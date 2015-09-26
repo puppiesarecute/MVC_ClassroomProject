@@ -50,6 +50,6 @@ C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstM
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\obj\Debug\FirstMvcApp.csprojResolveAssemblyReference.cache
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\obj\Debug\FirstMvcApp.dll
 C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\obj\Debug\FirstMvcApp.pdb
+C:\Users\ale\Documents\Visual Studio 2013\Projects\KEA_WebDev_4thSemClass\FirstMvcApp\FirstMvcApp\obj\Debug\FirstMvcApp.csprojResolveAssemblyReference.cache

@@ -6,13 +6,14 @@
 
 <h2>Edit</h2>
 
-@*<div>
-    <img src="@Model.ProfileImagePath" alt="Profile image" />
-</div>*@
+<div>
+    <img src="@Model.ProfileImagePath" alt="Profile image"></div>
 
 <div class="grayboxx">
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {      
+    {
+        @Html.HiddenFor(s => s.StudentId)
+        @Html.HiddenFor(s => s.ProfileImagePath)
         @Html.Partial("_CreateEditStudent")
     }
 </div>

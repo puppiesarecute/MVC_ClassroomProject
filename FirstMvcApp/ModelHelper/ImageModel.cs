@@ -35,5 +35,13 @@ namespace FirstMvcApp.ModelHelper
             image.Dispose();
             newImage.Dispose();
         }
+
+        public static void DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }

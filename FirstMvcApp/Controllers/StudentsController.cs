@@ -13,7 +13,7 @@ namespace FirstMvcApp.Controllers
         StudentsRepository studentRepo = new StudentsRepository();
 
         [HttpGet]
-        public ActionResult Edit(int studentId) //this has a valid id when I go to the edit view
+        public ActionResult Edit(int studentId) 
         {
             // look up student in db
             Student student = studentRepo.Find(studentId);
@@ -21,7 +21,7 @@ namespace FirstMvcApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Student student, HttpPostedFileBase image) // but when i click submit, the student object passed into here has id = 0
+        public ActionResult Edit(Student student, HttpPostedFileBase image) 
         {
             if(ModelState.IsValid)
             {

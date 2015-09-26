@@ -32,6 +32,11 @@ namespace FirstMvcApp.Models
         {
             if (image == null) return;
 
+            if (!String.IsNullOrEmpty(this.ProfileImagePath))
+            {
+                // delete the old picture before adding new picture
+                ImageModel.DeleteFile(serverPath + ProfileImagePath);
+            }
             //ImageModel
             Guid guid = Guid.NewGuid();
             ImageModel.ResizeAndSave(serverPath + pathToFile, guid.ToString(), image.InputStream, 200);

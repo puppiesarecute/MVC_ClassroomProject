@@ -21,6 +21,8 @@ namespace FirstMvcApp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Student> Students { get; set; }
+        public DbSet <CompetencyHeader> CompetencyHeaders { get; set; }
+        public DbSet <Competency> Competencies { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
