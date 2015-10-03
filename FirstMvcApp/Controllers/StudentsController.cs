@@ -9,8 +9,12 @@ namespace FirstMvcApp.Controllers
 {
     public class StudentsController : Controller
     {
-        // ApplicationDbContext db = new ApplicationDbContext();
-        StudentsRepository studentRepo = new StudentsRepository();
+        private readonly IStudentsRepository studentRepo;
+
+        public StudentsController(IStudentsRepository studentRepo)
+        {
+            this.studentRepo = studentRepo;
+        }
 
         [HttpGet]
         public ActionResult Edit(int studentId) 

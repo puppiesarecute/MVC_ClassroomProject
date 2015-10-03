@@ -1,4 +1,5 @@
 ﻿using FirstMvcApp.Models;
+using FirstMvcApp.Repositories;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace FirstMvcApp.Repositories
 {
-    public class StudentsRepository
+    public class StudentsRepository : IStudentsRepository
     {
         ApplicationDbContext context = new ApplicationDbContext();
 

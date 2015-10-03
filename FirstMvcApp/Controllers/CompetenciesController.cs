@@ -13,13 +13,19 @@ namespace FirstMvcApp.Controllers
 {
     public class CompetenciesController : Controller
     {
-        CompetencyRepository db = new CompetencyRepository();
-        CompetencyHeaderRepository headersDb = new CompetencyHeaderRepository();
+        private readonly ICompetencyRepository competencyDb;
+        private readonly ICompetencyHeaderRepository headersDb;
 
+        public CompetenciesController(ICompetencyRepository cptDb, ICompetencyHeaderRepository headersDb)
+        {
+            this.competencyDb = cptDb;
+            this.headersDb = headersDb;
+        }
+        
         // GET: Competencies
         public ActionResult Index()
         {
-            var competencies = db.Competencies.Include(c => c.CompetencyHeader);
+            var competencies = competencyDb.Competencies.Include(c => c.CompetencyHeader);
             return View(competencies.ToList());
         }
 
@@ -30,7 +36,7 @@ namespace FirstMvcApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competency competency = db.Find(id.Value);
+            Competency competency = competencyDb.Find(id.Value);
             if (competency == null)
             {
                 return HttpNotFound();
@@ -42,6 +48,8 @@ namespace FirstMvcApp.Controllers
         public ActionResult Create()
         {
             ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name");
+            
+            
             return View();
         }
 
@@ -54,7 +62,7 @@ namespace FirstMvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.InsertOrUpdate(competency);
+                competencyDb.InsertOrUpdate(competency);
                 return RedirectToAction("Index");
             }
 
@@ -69,7 +77,7 @@ namespace FirstMvcApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competency competency = db.Find(id.Value);
+            Competency competency = competencyDb.Find(id.Value);
             if (competency == null)
             {
                 return HttpNotFound();
@@ -87,7 +95,7 @@ namespace FirstMvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.InsertOrUpdate(competency);
+                competencyDb.InsertOrUpdate(competency);
                 return RedirectToAction("Index");
             }
             ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
@@ -101,7 +109,7 @@ namespace FirstMvcApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competency competency = db.Find(id.Value);
+            Competency competency = competencyDb.Find(id.Value);
             if (competency == null)
             {
                 return HttpNotFound();
@@ -113,9 +121,9 @@ namespace FirstMvcApp.Controllers
         // There's an exception when confirm delete. But isit a good isead to delete?
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Competency cpt)
+        public ActionResult DeleteConfirmed(int id)
         {
-            db.Delete(cpt);
+            competencyDb.Delete(id);
             return RedirectToAction("Index");
         }
 
@@ -123,7 +131,7 @@ namespace FirstMvcApp.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                competencyDb.Dispose();
             }
             base.Dispose(disposing);
         }

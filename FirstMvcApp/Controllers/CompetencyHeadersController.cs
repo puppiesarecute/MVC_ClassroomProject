@@ -13,8 +13,13 @@ namespace FirstMvcApp.Controllers
 {
     public class CompetencyHeadersController : Controller
     {
-        CompetencyHeaderRepository db = new CompetencyHeaderRepository();
+        private readonly ICompetencyHeaderRepository db;
 
+        public CompetencyHeadersController(ICompetencyHeaderRepository db)
+        {
+            this.db = db;
+        }
+        
         // GET: CompetencyHeaders
         public ActionResult Index()
         {
@@ -106,9 +111,9 @@ namespace FirstMvcApp.Controllers
         // POST: CompetencyHeaders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(CompetencyHeader header)
+        public ActionResult DeleteConfirmed(int id)
         {
-            db.Delete(header);
+            db.Delete(id);
             return RedirectToAction("Index");
         }
 

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace FirstMvcApp.Repositories
 {
-    public class CompetencyRepository
+    public class CompetencyRepository : ICompetencyRepository
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
@@ -34,9 +34,9 @@ namespace FirstMvcApp.Repositories
             this.Save();
         }
 
-        public void Delete(Competency cpt)
+        public void Delete(int id)
         {
-            context.Competencies.Remove(cpt);
+            context.Competencies.Remove(this.Find(id));
             this.Save();
         }
 
@@ -45,7 +45,7 @@ namespace FirstMvcApp.Repositories
             context.SaveChanges();
         }
 
-        internal void Dispose()
+        public void Dispose()
         {
             if (context != null)
             {

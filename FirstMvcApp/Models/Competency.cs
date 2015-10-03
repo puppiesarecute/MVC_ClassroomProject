@@ -10,6 +10,6 @@ namespace FirstMvcApp.Models
         public int CompetencyId { get; set; }
         public string Name { get; set; }
         public int CompetencyHeaderId { get; set; }
-        public virtual CompetencyHeader CompetencyHeader { get; set; }
+        public CompetencyHeader CompetencyHeader { get; set; }
     }
 }
