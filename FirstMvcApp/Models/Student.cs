@@ -28,6 +28,10 @@ namespace FirstMvcApp.Models
 
         public string ProfileImagePath { get; set; }
 
+        public virtual ICollection<Competency> Competencies { get; set; }
+
+        public Education Education { get; set; }
+
         public void SaveImage(HttpPostedFileBase image, String serverPath, String pathToFile)
         {
             if (image == null) return;

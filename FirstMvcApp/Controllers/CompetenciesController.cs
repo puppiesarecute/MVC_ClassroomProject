@@ -8,15 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using FirstMvcApp.Models;
 using FirstMvcApp.Repositories;
+using FirstMvcApp.Repositories.Interfaces;
 
 namespace FirstMvcApp.Controllers
 {
     public class CompetenciesController : Controller
     {
-        private readonly ICompetencyRepository competencyDb;
-        private readonly ICompetencyHeaderRepository headersDb;
+        private readonly IRepository<Competency> competencyDb;
+        private readonly IRepository<CompetencyHeader> headersDb;
 
-        public CompetenciesController(ICompetencyRepository cptDb, ICompetencyHeaderRepository headersDb)
+        public CompetenciesController(IRepository<Competency> cptDb, IRepository<CompetencyHeader> headersDb)
         {
             this.competencyDb = cptDb;
             this.headersDb = headersDb;
@@ -25,7 +26,7 @@ namespace FirstMvcApp.Controllers
         // GET: Competencies
         public ActionResult Index()
         {
-            var competencies = competencyDb.Competencies.Include(c => c.CompetencyHeader);
+            var competencies = competencyDb.All.Include(c => c.CompetencyHeader);
             return View(competencies.ToList());
         }
 
@@ -47,7 +48,7 @@ namespace FirstMvcApp.Controllers
         // GET: Competencies/Create
         public ActionResult Create()
         {
-            ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name");
+            ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name");
             
             
             return View();
@@ -66,7 +67,7 @@ namespace FirstMvcApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
+            ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
             return View(competency);
         }
 
@@ -82,7 +83,7 @@ namespace FirstMvcApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
+            ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
             return View(competency);
         }
 
@@ -98,7 +99,7 @@ namespace FirstMvcApp.Controllers
                 competencyDb.InsertOrUpdate(competency);
                 return RedirectToAction("Index");
             }
-            ViewBag.CompetencyHeaderId = new SelectList(headersDb.CompetencyHeaders, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
+            ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
             return View(competency);
         }
 

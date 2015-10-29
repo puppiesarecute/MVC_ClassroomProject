@@ -1,19 +1,35 @@
 ﻿using FirstMvcApp.Models;
+using FirstMvcApp.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace FirstMvcApp.Repositories
 {
-    public class CompetencyRepository : ICompetencyRepository
+    public class CompetencyRepository : IRepository<Competency>
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
-        public IQueryable<Competency> Competencies
+        public IQueryable<Competency> All
         {
-            get { return context.Competencies; }
+            get
+
+            {
+                return context.Competencies;
+            }
+        }
+
+        public IQueryable<Competency> AllIncluding(params Expression<Func<Competency, object>>[] includeProperties)
+        {
+            IQueryable<Competency> query = context.Competencies;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return query;
         }
 
         public Competency Find(int id)
@@ -51,6 +67,11 @@ namespace FirstMvcApp.Repositories
             {
                 context.Dispose();
             }
+        }
+
+        public void Delete(Competency student)
+        {
+            throw new NotImplementedException();
         }
     }
 

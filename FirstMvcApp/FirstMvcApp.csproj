@@ -188,17 +188,25 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Competency.cs" />
     <Compile Include="Models\CompetencyHeader.cs" />
+    <Compile Include="Models\Education.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="MyInterface\Emailer.cs" />
+    <Compile Include="MyInterface\FakeEmailer.cs" />
+    <Compile Include="MyInterface\IEmailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CompetencyHeaderRepository.cs" />
     <Compile Include="Repositories\CompetencyRepository.cs" />
-    <Compile Include="Repositories\ICompetencyHeaderRepository.cs" />
-    <Compile Include="Repositories\ICompetencyRepository.cs" />
-    <Compile Include="Repositories\IStudentsRepository.cs" />
+    <Compile Include="Repositories\EducationRepository.cs" />
+    <Compile Include="Repositories\Interfaces\Obsolete\ICompetencyHeaderRepository.cs" />
+    <Compile Include="Repositories\Interfaces\Obsolete\ICompetencyRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Interfaces\Obsolete\IStudentsRepository.cs" />
     <Compile Include="Repositories\StudentsRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="TDD\PinkFloydsTime.cs" />
+    <Compile Include="ViewModel\CreateEditStudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -225,6 +233,7 @@
       <DependentUpon>MyLessSite.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="ProfileImages\adopting-a-cat.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -291,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

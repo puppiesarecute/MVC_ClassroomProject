@@ -1,6 +1,8 @@
 ﻿using FirstMvcApp.Models;
 using FirstMvcApp.Repositories;
+using FirstMvcApp.Repositories.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,7 +10,7 @@ using System.Web;
 
 namespace FirstMvcApp.Repositories
 {
-    public class StudentsRepository : IStudentsRepository
+    public class StudentsRepository : IRepository<Student>
     {
         ApplicationDbContext context = new ApplicationDbContext();
 
@@ -32,6 +34,11 @@ namespace FirstMvcApp.Repositories
             return context.Students.Find(id);
         }
 
+        public IEnumerable<Competency> FindMatchingCompetencies(IEnumerable<int> competencyIds)
+        {
+            return context.Competencies.Where(x => competencyIds.Contains(x.CompetencyId)).ToList();
+        }
+
         public void InsertOrUpdate(Student student)
         {
             if (student.StudentId == 0) //new
@@ -45,9 +52,9 @@ namespace FirstMvcApp.Repositories
             this.Save();
         }
 
-        public void Delete(Student student)
+        public void Delete(int studentId)
         {
-            context.Students.Remove(student);
+            context.Students.Remove(this.Find(studentId));
             this.Save();
         }
 
@@ -56,5 +63,12 @@ namespace FirstMvcApp.Repositories
             context.SaveChanges();
         }
 
+        public void Dispose()
+        {
+            if (context != null)
+            {
+                context.Dispose();
+            }
+        }
     }
 }

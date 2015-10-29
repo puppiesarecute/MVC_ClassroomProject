@@ -11,6 +11,9 @@ namespace FirstMvcApp.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using FirstMvcApp.Repositories;
+    using MyInterface;
+    using Models;
+    using Repositories.Interfaces;
 
     public static class NinjectWebCommon 
     {
@@ -62,9 +65,11 @@ namespace FirstMvcApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IStudentsRepository>().To<StudentsRepository>();
-            kernel.Bind<ICompetencyRepository>().To<CompetencyRepository>();
-            kernel.Bind<ICompetencyHeaderRepository>().To<CompetencyHeaderRepository>();
+            kernel.Bind<IRepository<Student>>().To<StudentsRepository>();
+            kernel.Bind<IRepository<Competency>>().To<CompetencyRepository>();
+            kernel.Bind<IRepository<CompetencyHeader>>().To<CompetencyHeaderRepository>();
+            kernel.Bind<IRepository<Education>>().To<EducationRepository>();
+            kernel.Bind<IEmailer>().To<Emailer>();
         }        
     }
 }

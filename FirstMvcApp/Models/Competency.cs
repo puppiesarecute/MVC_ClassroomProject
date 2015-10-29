@@ -11,5 +11,6 @@ namespace FirstMvcApp.Models
         public string Name { get; set; }
         public int CompetencyHeaderId { get; set; }
         public CompetencyHeader CompetencyHeader { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

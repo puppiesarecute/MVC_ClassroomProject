@@ -8,14 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using FirstMvcApp.Models;
 using FirstMvcApp.Repositories;
+using FirstMvcApp.Repositories.Interfaces;
 
 namespace FirstMvcApp.Controllers
 {
     public class CompetencyHeadersController : Controller
     {
-        private readonly ICompetencyHeaderRepository db;
+        private readonly IRepository<CompetencyHeader> db;
 
-        public CompetencyHeadersController(ICompetencyHeaderRepository db)
+        public CompetencyHeadersController(IRepository<CompetencyHeader> db)
         {
             this.db = db;
         }
@@ -23,7 +24,7 @@ namespace FirstMvcApp.Controllers
         // GET: CompetencyHeaders
         public ActionResult Index()
         {
-            return View(db.CompetencyHeaders.ToList());
+            return View(db.All.ToList());
         }
 
         // GET: CompetencyHeaders/Details/5
