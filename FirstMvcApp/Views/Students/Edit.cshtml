@@ -1,4 +1,4 @@
-﻿@model FirstMvcApp.Models.Student
+﻿@model FirstMvcApp.ViewModel.CreateEditStudentViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -7,14 +7,19 @@
 <h2>Edit</h2>
 
 <div>
-    <img src="@Model.ProfileImagePath" alt="Profile image"></div>
+    <img src="@Model.Student.ProfileImagePath" alt="Profile image"></div>
 
 <div class="grayboxx">
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.HiddenFor(s => s.StudentId)
-        @Html.HiddenFor(s => s.ProfileImagePath)
+        @Html.HiddenFor(s => s.Student.StudentId)
+        @Html.HiddenFor(s => s.Student.ProfileImagePath)
         @Html.Partial("_CreateEditStudent")
+
+        for (int i = 0; i < Model.Student.Competencies.Count(); i++)
+        {
+            @Html.HiddenFor(s => s.Student.Competencies.ElementAt(i).CompetencyId)
+        }        
     }
 </div>
 

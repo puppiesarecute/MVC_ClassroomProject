@@ -10,6 +10,6 @@ namespace FirstMvcApp.ViewModel
     {
         public Student Student { get; set; }
         public ICollection<CompetencyHeader> CompetencyHeaders { get; set; }
-        public ICollection<Competency> SelectedCompetencies { get; set; }
+        public ICollection<Education> Edu { get; set; }
     }
 }

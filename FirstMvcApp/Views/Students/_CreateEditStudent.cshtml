@@ -38,6 +38,29 @@
 </div>
 
 <div class="form-group">
+
+    <div>
+        <label>Select Education:</label>
+    </div>
+    @foreach (var item in Model.Edu)
+    {
+        <div>
+            @if (Model.Student.Education != null && Model.Student.Education.Equals(item))
+            {
+                <input type="radio" value="@item.EducationId" name="eduId" checked/>
+                @item.EducationName
+            }
+            else
+            {
+                <input type="radio" value="@item.EducationId" name="eduId" />
+                @item.EducationName
+            }            
+        </div>        
+    }
+
+</div>
+
+<div class="form-group">
     @foreach (var item in Model.CompetencyHeaders)
     {
         <div>
@@ -46,8 +69,16 @@
         foreach (var competencyItem in item.Competencies)
         {
             <div>
-                <input type="checkbox" value="@competencyItem.CompetencyId" name="compIds"/>
-                @competencyItem.Name
+                @if (Model.Student.Competencies != null && Model.Student.Competencies.Contains(competencyItem))
+                {
+                    <input type="checkbox" value="@competencyItem.CompetencyId" name="compIds" checked />
+                    @competencyItem.Name
+                }
+                else
+                {
+                    <input type="checkbox" value="@competencyItem.CompetencyId" name="compIds"/>
+                    @competencyItem.Name
+                }
             </div>
         }
 

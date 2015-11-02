@@ -12,7 +12,12 @@ namespace FirstMvcApp.Repositories
 {
     public class StudentsRepository : IRepository<Student>
     {
-        ApplicationDbContext context = new ApplicationDbContext();
+        ApplicationDbContext context;
+
+        public StudentsRepository(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
 
         public IQueryable<Student> All
         {
@@ -34,11 +39,6 @@ namespace FirstMvcApp.Repositories
             return context.Students.Find(id);
         }
 
-        public IEnumerable<Competency> FindMatchingCompetencies(IEnumerable<int> competencyIds)
-        {
-            return context.Competencies.Where(x => competencyIds.Contains(x.CompetencyId)).ToList();
-        }
-
         public void InsertOrUpdate(Student student)
         {
             if (student.StudentId == 0) //new
@@ -46,9 +46,46 @@ namespace FirstMvcApp.Repositories
                 context.Students.Add(student);
             }
             else //edit
-            {
-                context.Entry(student).State = EntityState.Modified;
+            {             
+                //Update the competencies
+                //get the student include list of competencies from db
+                var existingstudent = context.Students.Include(y => y.Competencies).Include(e => e.Education).SingleOrDefault(x => x.StudentId == student.StudentId);
+                var test = context.Entry(student);
+
+                if (existingstudent == null)
+                    throw new Exception(string.Format("No student found with StudentId {0}", student.StudentId));
+
+                //get the newly added competencies that are not in the existing competencies
+                var newComps = student.Competencies.Except(existingstudent.Competencies);
+
+                //get the competencies to be deleted 
+                var deleteComps = existingstudent.Competencies.Except(student.Competencies);
+
+                foreach (var comp in deleteComps.ToArray())
+                    existingstudent.Competencies.Remove(comp);
+
+                foreach (var comp in newComps)
+                {
+                    if (context.Entry(comp).State == EntityState.Detached)
+                        context.Competencies.Attach(comp);
+
+                    existingstudent.Competencies.Add(comp);
+                }
+
+                //Update the Education
+                if (existingstudent.Education.EducationId != student.Education.EducationId)
+                {
+                    existingstudent.Education = student.Education;
+                    if (context.Entry(student.Education).State == EntityState.Detached)
+                        context.Educations.Attach(existingstudent.Education);
+                }
+
+                //TODO fix this error!!!
+                //test.State = EntityState.Modified;
             }
+
+            this.Save();
+            context.Entry(student).State = EntityState.Modified;
             this.Save();
         }
 

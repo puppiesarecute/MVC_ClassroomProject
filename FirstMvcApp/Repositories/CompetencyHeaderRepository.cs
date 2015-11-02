@@ -11,7 +11,12 @@ namespace FirstMvcApp.Repositories
 {
     public class CompetencyHeaderRepository : IRepository<CompetencyHeader>
     {
-        ApplicationDbContext context = new ApplicationDbContext();
+        ApplicationDbContext context;
+
+        public CompetencyHeaderRepository(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
 
         public IQueryable<CompetencyHeader> All
         {

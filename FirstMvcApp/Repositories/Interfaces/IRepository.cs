@@ -11,7 +11,6 @@ namespace FirstMvcApp.Repositories.Interfaces
         IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
         void Delete(int id);
         T Find(int id);
-        //IEnumerable<T> FindMatchingList(IEnumerable<int> objectIds);
         void InsertOrUpdate(T type);
         void Save();
         void Dispose();

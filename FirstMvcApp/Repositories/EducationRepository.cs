@@ -9,7 +9,13 @@ namespace FirstMvcApp.Repositories
 {
     public class EducationRepository : IRepository<Education>
     {
-        ApplicationDbContext context = new ApplicationDbContext();
+        ApplicationDbContext context;
+
+        public EducationRepository(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
+
         public IQueryable<Education> All
         {
             get
