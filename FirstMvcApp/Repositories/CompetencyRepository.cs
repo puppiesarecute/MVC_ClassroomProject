@@ -42,6 +42,7 @@ namespace FirstMvcApp.Repositories
             return context.Competencies.Find(id);
         }
 
+        // TODO fix exception - An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
         public void InsertOrUpdate(Competency cpt)
         {
             if (cpt.CompetencyId == 0) //new

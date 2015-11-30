@@ -35,6 +35,7 @@ namespace FirstMvcApp.Controllers
         //    this.competencyRepository = competencyRepo;
         //}
 
+
         [HttpGet]
         public ActionResult Edit(int studentId) 
         {
@@ -55,6 +56,7 @@ namespace FirstMvcApp.Controllers
             if(ModelState.IsValid)
             {
                 saveStudentWithImageAndCompetency(vm.Student, image, compIds, eduId);
+                studentRepository.InsertOrUpdate(vm.Student); //TODO this might be redundant
                 return RedirectToAction("Index");
             }
             return View();
@@ -65,10 +67,10 @@ namespace FirstMvcApp.Controllers
             string path = Server != null ? Server.MapPath("~") : "";
             student.SaveImage(image, path, "/ProfileImages/");
 
-            // saves competencies
+            //TODO check if i actually need these 2 lines:
+            // get competencies
             student.Competencies = competencyRepository.All.Where(x => compIds.Contains(x.CompetencyId)).ToList();
-            
-            // saves education
+            // get education
             student.Education = educationRepository.Find(eduId);
 
             studentRepository.InsertOrUpdate(student);
@@ -92,7 +94,7 @@ namespace FirstMvcApp.Controllers
             if (ModelState.IsValid)
             {
                 saveStudentWithImageAndCompetency(data.Student, image, compIds, eduId);
-                studentRepository.InsertOrUpdate(data.Student);
+                studentRepository.InsertOrUpdate(data.Student); //TODO this might be redundant2
 
                 return RedirectToAction("Index");
                 // alternative (not recommendable because if we change the list in View we have to change it here too):

@@ -50,7 +50,7 @@ namespace FirstMvcApp.Repositories
                 //Update the competencies
                 //get the student include list of competencies from db
                 var existingstudent = context.Students.Include(y => y.Competencies).Include(e => e.Education).SingleOrDefault(x => x.StudentId == student.StudentId);
-                var test = context.Entry(student);
+                var test = context.Entry(existingstudent);
 
                 if (existingstudent == null)
                     throw new Exception(string.Format("No student found with StudentId {0}", student.StudentId));
@@ -80,12 +80,12 @@ namespace FirstMvcApp.Repositories
                         context.Educations.Attach(existingstudent.Education);
                 }
 
-                //TODO fix this error!!!
-                //test.State = EntityState.Modified;
-            }
+                existingstudent.FirstName = student.FirstName;
+                existingstudent.LastName = student.LastName;
 
-            this.Save();
-            context.Entry(student).State = EntityState.Modified;
+                //TODO fix this error!!!
+                test.State = EntityState.Modified;
+            }
             this.Save();
         }
 

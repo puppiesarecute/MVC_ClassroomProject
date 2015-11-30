@@ -53,6 +53,7 @@ namespace FirstMvcApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //TODO update this so that a new Competency can only be added from the Student Index,
         public ActionResult Create([Bind(Include = "CompetencyHeaderId,Name")] CompetencyHeader competencyHeader)
         {
             if (ModelState.IsValid)

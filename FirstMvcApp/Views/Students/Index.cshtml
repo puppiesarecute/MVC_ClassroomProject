@@ -46,7 +46,7 @@
                         @foreach (var compHeader in Model.CompetencyHeaders)
                         {
                             <div class="Invisible FilterCompetencies">
-                                <label class="lblHeader"><input type="checkbox" name="competencyHeader" class="CompetencyHeader MarginRight5" />@compHeader.Name</label>
+                                <label class="lblHeader"><input type="checkbox" name="competencyHeader" class="CompetencyHeader MarginRight5 h2" />@compHeader.Name</label>
                                 <span class="glyphicon glyphicon-plus Invisible"></span>
 
                                 <div class="outerContainer">
@@ -54,7 +54,7 @@
                                     {
                                         <div class="MarginLeft40 CompetencyDiv">
 
-                                            <label class="CompetencyLabel"><input class="MarginRight5 Competency" type="checkbox" name="Competencies" value="@competency.Name" />@competency.Name</label>
+                                            <label class="CompetencyLabel"><input class="MarginRight5 Competency h4" type="checkbox" name="Competencies" value="@competency.Name" />@competency.Name</label>
                                             <span class="glyphicon glyphicon-pencil Invisible"></span>
                                             <span class="glyphicon glyphicon-remove Invisible"></span>
                                         </div>
@@ -113,8 +113,56 @@
         <script type="text/javascript">
             // this is jQuery code, a.k.a JavaScript with JQuery library
             $(function () { //when document is loaded
+                $(".glyphicon-plus").click(function () {
+                    //$(this) indicates that the following html will be shown below this click
+                    $(this).parent().children(".outerContainer").prepend('<input type="text" class="form-control compHeaderInput"/>' +
+                        '<input type="button" class="btn btn-primary" value="Save Competency" id="btnSaveComp"/>');
+                    $("#btnSaveComp").click(function () {
+                        var value = $(this).parent().children(".compHeaderInput").val();
+                        var compHeaderName = $(this).parent().parent().children(".lblHeader").text(); //TODO get the relevantLabel.text()
+
+                        var that = $(this); // "this" is #btnSaveComp, which is only available in this scope so if you wanna reuse it else where, use "that" to get the reference
+                        
+
+                        //call the Create function in CompetencyHeaderController
+                        var newComp = {
+                            competencyName: value,
+                            competencyheadername: compHeaderName
+                        };
+
+                        alert(JSON.stringify(newComp));
+
+                        $.ajax({
+                            type: "POST",
+                            url: "@Url.Action("Create", "Competencies")",
+                            data: JSON.stringify(newComp),
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function () {
+                                //what to do after the call is success
+                            },
+                            error: function () {
+                                //something bad happened
+                            }
+                        });
+                    });
+                });
+
+                //$(document.body).on("click", "#btnSaveComp", function () {
+                //    //this is the same as above but it does not have to be in the same scope
+                //});
+
                 $("#btnCompetencies").click(function () {
                     //when user click on the button with id btnCompetencies
+                    $(".FilterCompetencies").show("slow");
+                    $("#btnEditCompetencies").show();
+                });
+
+                $("#btnEditCompetencies").click(function () {
+                    //displays all the icons
+                    $(".glyphicon-remove").show();
+                    $(".glyphicon-pencil").show();
+                    $(".glyphicon-plus").show();
                 });
             });
         </script>

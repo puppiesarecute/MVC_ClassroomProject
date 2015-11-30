@@ -58,17 +58,31 @@ namespace FirstMvcApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CompetencyId,Name,CompetencyHeaderId")] Competency competency)
+        //[ValidateAntiForgeryToken]
+        // public ActionResult Create([Bind(Include = "CompetencyId,Name,CompetencyHeaderId")] Competency competency)
+        public JsonResult Create(string competencyName, string competencyHeaderName)
         {
-            if (ModelState.IsValid)
-            {
-                competencyDb.InsertOrUpdate(competency);
-                return RedirectToAction("Index");
-            }
+            CompetencyHeader header = (from c in headersDb.All where c.Name == competencyHeaderName select c).SingleOrDefault();
 
-            ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
-            return View(competency);
+            if (header != null)
+            {
+                Competency newComp = new Competency
+                {
+                    Name = competencyName,
+                    CompetencyHeader = header
+                };
+
+                competencyDb.InsertOrUpdate((newComp));
+            }
+            //if (ModelState.IsValid)
+            //{
+            //    competencyDb.InsertOrUpdate(competency);
+            //    return RedirectToAction("Index");
+            //}
+
+            //ViewBag.CompetencyHeaderId = new SelectList(headersDb.All, "CompetencyHeaderId", "Name", competency.CompetencyHeaderId);
+            //return View(competency);
+            return Json("ok");
         }
 
         // GET: Competencies/Edit/5

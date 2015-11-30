@@ -30,6 +30,8 @@ namespace FirstMvcApp.Models
 
         public virtual ICollection<Competency> Competencies { get; set; }
 
+        public string ApplicationUserId { get; set; } //because in ApplicationUser table the id is a guid
+
         public Education Education { get; set; }
 
         public void SaveImage(HttpPostedFileBase image, String serverPath, String pathToFile)

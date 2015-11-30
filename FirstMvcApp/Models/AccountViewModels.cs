@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FirstMvcApp.ViewModel;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FirstMvcApp.Models
@@ -79,6 +80,8 @@ namespace FirstMvcApp.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public CreateEditStudentViewModel StudentVM { get; set; }
     }
 
     public class ResetPasswordViewModel
